@@ -1,4 +1,9 @@
-# 01-AztecOO.py: 
+# 01-Amesos.py: demonstrates how the linear solver
+# can be safely selected from the Amesos factory.
+# All possible Amesos solver types are listed in
+# stypes, however, depending on the Trilinos 
+# configuration and installation, not all solvers
+# are available.
 
 # Import Amesos modules from PyTrilinos
 from PyTrilinos import Amesos
@@ -19,6 +24,7 @@ stypes.append("Amesos_Superludist")
 stypes.append("Amesos_Dscpack")
 stypes.append("Amesos_Mumps")
 
+# Loop over all possible types and check for availability
 for itype in stypes:
     if factory.Query(itype) is True:
         print("Solver (%s) is supported" % (itype))
